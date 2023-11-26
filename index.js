@@ -18,6 +18,10 @@ $("#calculateButton").click(function () {
     const differenceInMinutes = (Math.floor(differenceInMilliseconds / (1000 * 60)) % 60);
     const differenceInHours = Math.floor(differenceInMilliseconds / (1000 * 60 * 60));
 
+    if (differenceInHours.isNaN() || differenceInMinutes.isNaN()) {
+        return;
+    }
+
     const differenceInMinutesString = differenceInMinutes < 10 ? `0${differenceInMinutes}` : differenceInMinutes;
     const differenceInHoursString = differenceInHours < 10 ? `0${differenceInHours}` : differenceInHours;
 
