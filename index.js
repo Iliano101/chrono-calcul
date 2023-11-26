@@ -10,12 +10,15 @@ $("#calculateButton").click(function () {
     // Calculate the difference in milliseconds
     let differenceInMilliseconds = targetTime - timeNow;
 
+
+    if ($("#offsetBox").is(":checked")) {
+        differenceInMilliseconds -= (15 * 60 * 1000);
+    }
+
     if (differenceInMilliseconds < 0) {
         $("#result").html("The target time is in the past!");
         return;
     }
-
-    differenceInMilliseconds -= (15 * 60 * 1000);
 
     const differenceInMinutes = (Math.floor(differenceInMilliseconds / (1000 * 60)) % 60);
     const differenceInHours = Math.floor(differenceInMilliseconds / (1000 * 60 * 60));
