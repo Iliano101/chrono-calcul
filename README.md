@@ -1,1 +1,1 @@
-# timerCalculator
+# Timer Calculator
