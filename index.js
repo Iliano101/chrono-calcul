@@ -1,4 +1,8 @@
-$("#calculateButton").click(function () {
+$("#targetTime").on("change", function () {
+    update();
+});
+
+function update() {
     // Get the current time
     const timeNow = new Date();
     // Get the target time
@@ -31,4 +35,4 @@ $("#calculateButton").click(function () {
     const differenceInHoursString = differenceInHours < 10 ? `0${differenceInHours}` : differenceInHours;
 
     $("#result").html(`${differenceInHoursString}:${differenceInMinutesString}:00`);
-});
+}
