@@ -2,25 +2,25 @@ $("#targetTime").on("change", function () {
     update();
 });
 
+
 function update() {
     // Get the current time
     const timeNow = new Date();
     // Get the target time
     let targetTime = new Date();
-    const timeArray = $("#targetTime").val().split(":");
+    const timeArray = document.getElementById('targetTime').value.split(":");
     targetTime.setHours(timeArray[0]);
     targetTime.setMinutes(timeArray[1]);
 
     // Calculate the difference in milliseconds
     let differenceInMilliseconds = targetTime - timeNow;
 
-
-    if ($("#offsetBox").is(":checked")) {
+    if (document.getElementById('offsetBox').checked) {
         differenceInMilliseconds -= (15 * 60 * 1000);
     }
 
     if (differenceInMilliseconds < 0) {
-        $("#result").html("The target time is in the past!");
+        document.getElementById('result').textContent = "The target time is in the past!";
         return;
     }
 
@@ -34,5 +34,5 @@ function update() {
     const differenceInMinutesString = differenceInMinutes < 10 ? `0${differenceInMinutes}` : differenceInMinutes;
     const differenceInHoursString = differenceInHours < 10 ? `0${differenceInHours}` : differenceInHours;
 
-    $("#result").html(`${differenceInHoursString}:${differenceInMinutesString}:00`);
+    document.getElementById('result').textContent = `${differenceInHoursString}:${differenceInMinutesString}:00`;
 }
