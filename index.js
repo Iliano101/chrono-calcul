@@ -2,7 +2,17 @@ $("#targetTime").on("change", function () {
     update();
 });
 
-
+/**
+ * Updates the displayed time based on the target time entered by the user.
+ * 
+ * This function retrieves the current time and the target time from the input field.
+ * It calculates the difference between the target time and the current time in milliseconds.
+ * If the offset checkbox is checked, it subtracts 15 minutes from the difference.
+ * If the difference is negative, it displays an error message.
+ * Otherwise, it calculates the difference in hours and minutes and displays the result.
+ * 
+ * @returns {void}
+ */
 function update() {
     // Get the current time
     const timeNow = new Date();
