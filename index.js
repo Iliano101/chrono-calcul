@@ -32,6 +32,9 @@ function update() {
     const targetTimeElement = document.getElementById('targetTime');
     const targetTimeValue = targetTimeElement.value;
 
+    const offsetBoxElement = document.getElementById('offsetBox');
+    const resultElement = document.getElementById('result');
+
     // Split the target time value into hours and minutes
     const timeArray = targetTimeValue.split(":");
     const targetHours = timeArray[0];
@@ -40,21 +43,22 @@ function update() {
     // Create a new date object with the current date and target time
     const targetTime = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), targetHours, targetMinutes);
 
+
     // Calculate the difference in milliseconds
     let differenceInMilliseconds = targetTime - currentDate;
 
     // Check if the offset box is checked and subtract 15 minutes from the difference if true
-    const offsetBoxElement = document.getElementById('offsetBox');
     if (offsetBoxElement.checked) {
         differenceInMilliseconds -= (15 * 60 * 1000);
     }
 
     // Check if the target time is in the past and display an error message if true
     if (differenceInMilliseconds < 0) {
-        const resultElement = document.getElementById('result');
-        resultElement.textContent = "Le temps cible est dans le passé !";
+        resultElement.innerHTML = "Le temps cible est dans le passé&nbsp;!";
+        resultElement.style.fontSize = "5vw";
         return;
     }
+
 
     // Calculate the difference in hours and minutes
     const differenceInMinutes = (Math.floor(differenceInMilliseconds / (1000 * 60)) % 60);
@@ -70,6 +74,6 @@ function update() {
     const differenceInHoursString = differenceInHours < 10 ? `0${differenceInHours}` : differenceInHours;
 
     // Display the result
-    const resultElement = document.getElementById('result');
     resultElement.textContent = `${differenceInHoursString}:${differenceInMinutesString}:00`;
+    resultElement.style.fontSize = "17vw";
 }
