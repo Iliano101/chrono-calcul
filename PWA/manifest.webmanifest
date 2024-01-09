@@ -1,14 +1,15 @@
 {
     "name": "Chrono Calcul",
     "short_name": "Chrono Calcul",
-    "start_url": "./index.html",
+    "start_url": "../index.html",
+    "scope": "../",
     "display": "standalone",
     "background_color": "#212529",
     "theme_color": "#212529",
     "description": "Calculateur de chronomètre à partir du temps actuel",
     "icons": [
         {
-            "src": "./assets/stopwatch-fill.svg",
+            "src": "../assets/stopwatch-fill.svg",
             "sizes": "any"
         }
     ],
