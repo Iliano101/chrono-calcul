@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Calculateur de timer à partir du temps actuel">
     <meta name="theme-color" content="#212529" />
+    <meta name="HandheldFriendly" content="true" />
 
     <title>
         Chrono Calcul
@@ -39,7 +40,7 @@
                 <div class="input-group-text">
                     <input class="form-check-input mt-0 mx-2" type="checkbox" value="" id="offsetBox" onclick="update()"
                         checked>
-                    <label for="offsetBox">Offset by 15 mins</label>
+                    <label for="offsetBox">-15 mins</label>
                 </div>
                 <input type="time" id="targetTime" class="form-control text-center inputText bg-dark text-light"
                     onchange="update()">
