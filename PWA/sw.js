@@ -1,14 +1,14 @@
 const cacheName = "timer-v1";
 const staticAssets = [
-    "./",
-    "./PWA",
-    "./assets",
-    "./index.html",
-    "./style.css",
-    "./index.js",
-    "./PWA/sw.js",
-    "./PWA/manifest.webmanifest",
-    "./assets/stopwatch-fill.svg"
+    "../",
+    "../PWA",
+    "../assets",
+    "../index.html",
+    "../style.css",
+    "../index.js",
+    "../PWA/sw.js",
+    "../PWA/manifest.webmanifest",
+    "../assets/stopwatch-fill.svg"
 ];
 
 
