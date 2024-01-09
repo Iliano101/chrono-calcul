@@ -8,7 +8,9 @@ const staticAssets = [
     "../index.js",
     "../PWA/sw.js",
     "../PWA/manifest.webmanifest",
-    "../assets/stopwatch-fill.svg"
+    "../assets/512px-icon.png",
+    "../assets/maskable-icon.png",
+    "../assets/svg-icon.svg",
 ];
 
 
