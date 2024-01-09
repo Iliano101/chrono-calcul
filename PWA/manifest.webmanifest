@@ -9,6 +9,11 @@
     "description": "Calculateur de chronomètre à partir du temps actuel",
     "icons": [
         {
+            "src": "../assets/stopwatch-fill.png",
+            "sizes": "512x 512",
+            "type": "image/png"
+        },
+        {
             "src": "../assets/stopwatch-fill.svg",
             "sizes": "any"
         }
