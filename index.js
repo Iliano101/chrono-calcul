@@ -1,3 +1,18 @@
+document.addEventListener("DOMContentLoaded", function () {
+    registerSW();
+});
+
+async function registerSW() {
+    if ('serviceWorker' in navigator) {
+        try {
+            await navigator.serviceWorker.register('./PWA/sw.js');
+        }
+        catch (err) {
+            console.log(`SW registration failed`);
+        }
+    }
+}
+
 /**
  * Updates the displayed time based on the target time entered by the user.
  * 
