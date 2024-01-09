@@ -9,13 +9,19 @@
     "description": "Calculateur de chronomètre à partir du temps actuel",
     "icons": [
         {
-            "src": "../assets/stopwatch-fill.png",
-            "sizes": "512x 512",
+            "src": "../assets/512px-icon.png",
+            "sizes": "512x512",
             "type": "image/png"
         },
         {
-            "src": "../assets/stopwatch-fill.svg",
+            "src": "../assets/svg-icon.svg",
             "sizes": "any"
+        },
+        {
+            "src": "../assets/maskable-icon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ],
     "lang": "en-CA",

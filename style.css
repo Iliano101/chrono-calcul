@@ -1,12 +1,11 @@
-.inputText {
+.input-text {
     font-size: xx-large;
-    font-weight: bold;
-}
-
-.centerv {
-    padding-top: 30vh;
 }
 
 .text-bold {
     font-weight: bold;
+}
+
+.container-fluid {
+    padding-top: 20vh;
 }
