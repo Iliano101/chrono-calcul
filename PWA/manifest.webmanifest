@@ -1,0 +1,17 @@
+{
+    "name": "Timer Calculator",
+    "short_name": "Timer Calculator",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#212529",
+    "theme_color": "#212529",
+    "description": "Calculator to calculate the time of a timer",
+    "icons": [
+        {
+            "src": "./assets/stopwatch-fill.svg",
+            "sizes": "any"
+        }
+    ],
+    "lang": "en-CA",
+    "orientation": "portrait"
+}
