@@ -1,8 +1,3 @@
-.bigText {
-    font-size: 80px;
-    font-weight: bold;
-}
-
 .inputText {
     font-size: xx-large;
     font-weight: bold;
@@ -10,4 +5,8 @@
 
 .centerv {
     padding-top: 30vh;
+}
+
+.text-bold {
+    font-weight: bold;
 }
