@@ -52,13 +52,13 @@ function update() {
     // Check if the target time is in the past and display an error message if true
     if (differenceInMilliseconds < 0) {
         const resultElement = document.getElementById('result');
-        resultElement.textContent = "The target time is in the past!";
+        resultElement.textContent = "Le temps cible est dans le passé !";
         return;
     }
 
     // Calculate the difference in hours and minutes
-    const differenceInMinutes = (Math.round(differenceInMilliseconds / (1000 * 60)) % 60);
-    const differenceInHours = Math.round(differenceInMilliseconds / (1000 * 60 * 60));
+    const differenceInMinutes = (Math.floor(differenceInMilliseconds / (1000 * 60)) % 60);
+    const differenceInHours = Math.floor(differenceInMilliseconds / (1000 * 60 * 60));
 
     // Check if the difference in hours or minutes is NaN and return if true
     if (isNaN(differenceInHours) || isNaN(differenceInMinutes)) {
