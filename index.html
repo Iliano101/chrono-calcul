@@ -31,25 +31,25 @@
 
 </head>
 
-<body class="bg-dark container-fluid text-center">
+<body class="bg-dark container-fluid">
     <!-- Result text -->
-    <div class="row mb-5 mt-sm-5 mt-md-0">
-        <span id="result" for="targetTime" class="text-bold text-light font-monospace"></span>
-    </div>
+    <div class="row text-center align-content-center">
+        <span id="result" for="targetTime" class="text-bold text-light font-monospace col-12 mb-5"></span>
 
 
-    <!-- Time Selection -->
-    <div class="row my-5">
-        <div class="input-group">
+
+        <!-- Time Selection -->
+
+        <div class="input-group  col-12 my-5">
             <input type="time" id="targetTime" class="form-control text-center input-text text-bold bg-dark text-light"
                 onchange="update()">
             <label class="input-group-text" for="targetTime">Heure cible</label>
         </div>
-    </div>
 
-    <!-- Checkbox -->
-    <div class="row my-5 align-content-center text-center ">
-        <div class="input-group m-2">
+
+        <!-- Checkbox -->
+
+        <div class="input-group col-12 mt-5 ">
             <div class="input-group-text p-3">
                 <input class="form-check-input" type="checkbox" value="" id="offsetBox" onclick="update()" checked>
             </div>
