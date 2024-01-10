@@ -1,24 +1,24 @@
 {
     "name": "Chrono Calcul",
     "short_name": "Chrono Calcul",
-    "start_url": "../index.html",
-    "scope": "../",
+    "start_url": "./index.html",
+    "scope": "./",
     "display": "standalone",
     "background_color": "#212529",
     "theme_color": "#212529",
     "description": "Calculateur de chronomètre à partir du temps actuel",
     "icons": [
         {
-            "src": "../assets/512px-icon.png",
+            "src": "./assets/512px-icon.png",
             "sizes": "512x512",
             "type": "image/png"
         },
         {
-            "src": "../assets/svg-icon.svg",
+            "src": "./assets/svg-icon.svg",
             "sizes": "any"
         },
         {
-            "src": "../assets/maskable-icon.png",
+            "src": "./assets/maskable-icon.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"
@@ -28,14 +28,14 @@
     "orientation": "portrait",
     "screenshots": [
         {
-            "src": "../assets/mobile-screenshot.png",
+            "src": "./assets/mobile-screenshot.png",
             "sizes": "1442x3090",
             "type": "image/png",
             "form_factor": "narrow",
             "label": "Application sur mobile"
         },
         {
-            "src": "../assets/wide-screenshot.png",
+            "src": "./assets/wide-screenshot.png",
             "sizes": "1920x1080",
             "type": "image/png",
             "form_factor": "wide",
