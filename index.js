@@ -56,7 +56,7 @@ function update() {
     // Check if the target time is in the past and display an error message if true
     if (differenceInMilliseconds < 0) {
         resultElement.innerHTML = "Le temps cible est dans le passé&nbsp;!";
-        resultElement.style.fontSize = "10vw";
+        resultElement.style.fontSize = "10vmin";
         return;
     }
 
@@ -76,5 +76,5 @@ function update() {
 
     // Display the result
     resultElement.textContent = `${differenceInHoursString}:${differenceInMinutesString}:00`;
-    resultElement.style.fontSize = "20vw";
+    resultElement.style.fontSize = "20vmin";
 }
