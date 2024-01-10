@@ -1,8 +1,6 @@
 const cacheName = "timer-v1";
 const staticAssets = [
     "../",
-    "../PWA",
-    "../assets",
     "../index.html",
     "../style.css",
     "../index.js",
