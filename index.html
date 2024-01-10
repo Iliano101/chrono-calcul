@@ -31,22 +31,35 @@
 
 </head>
 
-<body class="bg-dark container-fluid">
-    <div class="row text-center">
-        <div class="col-12 justify-content-center py-5 mt-5">
-            <span id="result" for="targetTime" class="text-bold text-light my-5 font-monospace"></span>
+<body class="bg-dark container-fluid text-center">
+    <!-- Result text -->
+    <div class="row mb-5 mt-sm-5 mt-md-0">
+        <span id="result" for="targetTime" class="text-bold text-light font-monospace"></span>
+    </div>
 
-            <div class="input-group mt-5">
-                <div class="input-group-text">
-                    <input class="form-check-input mt-0 mx-2" type="checkbox" value="" id="offsetBox" onclick="update()"
-                        checked>
-                    <label for="offsetBox">-15 mins</label>
-                </div>
-                <input type="time" id="targetTime"
-                    class="form-control text-center input-text text-bold bg-dark text-light" onchange="update()">
+
+    <!-- Time Selection -->
+    <div class="row my-5">
+        <div class="input-group">
+            <input type="time" id="targetTime" class="form-control text-center input-text text-bold bg-dark text-light"
+                onchange="update()">
+            <label class="input-group-text" for="targetTime">Heure cible</label>
+        </div>
+    </div>
+
+    <!-- Checkbox -->
+    <div class="row my-5 align-content-center text-center ">
+        <div class="input-group m-2">
+            <div class="input-group-text p-3">
+                <input class="form-check-input" type="checkbox" value="" id="offsetBox" onclick="update()" checked>
+            </div>
+            <div class="input-group-text p-3">
+                <label for="offsetBox">-15 mins</label>
             </div>
         </div>
     </div>
+
+
 </body>
 
 </html>
