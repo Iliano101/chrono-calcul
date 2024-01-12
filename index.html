@@ -33,14 +33,14 @@
 
 <body class="bg-dark container-fluid">
     <!-- Result text -->
-    <div class="row text-center align-content-center">
+    <div class="row ">
         <span id="result" for="targetTime" class="text-bold text-light col-12 mb-5"></span>
 
 
 
         <!-- Time Selection -->
 
-        <div class="input-group  col-12 my-5">
+        <div class=" input-group  my-5">
             <input type="time" id="targetTime" class="form-control text-center input-text text-bold bg-dark text-light"
                 onchange="update()">
             <label class="input-group-text" for="targetTime">Heure cible</label>
@@ -56,6 +56,12 @@
             <div class="input-group-text p-3">
                 <label for="offsetBox">-15 mins</label>
             </div>
+        </div>
+
+        <div class="col-12 mt-5">
+            <button type="button" class="btn btn-danger btn-sm mt-5" onclick="resetCache()">
+                Supprimer cache
+            </button>
         </div>
     </div>
 

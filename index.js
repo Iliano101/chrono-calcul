@@ -1,7 +1,26 @@
+const SW_CACHE_NAME = "timer-v1";
+
 document.addEventListener("DOMContentLoaded", function () {
     registerSW();
     update();
 });
+
+
+function resetCache() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+            for (const registration of registrations) {
+                // unregister service worker
+                registration.unregister();
+            }
+        });
+    }
+
+    caches.delete(SW_CACHE_NAME);
+    alert("Cache vidé");
+    location.reload();
+}
+
 
 async function registerSW() {
     if ('serviceWorker' in navigator) {
