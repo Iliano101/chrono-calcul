@@ -1,27 +1,21 @@
 const SW_CACHE_NAME = "timer-v1";
 
+/**
+ * Initializes the document by registering the service worker and updating the target time.
+ */
 document.addEventListener("DOMContentLoaded", function () {
     registerSW();
     update();
 });
 
-
-function resetCache() {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function (registrations) {
-            for (const registration of registrations) {
-                // unregister service worker
-                registration.unregister();
-            }
-        });
-    }
-
-    caches.delete(SW_CACHE_NAME);
-    alert("Cache vidé");
-    location.reload();
-}
-
-
+/**
+ * Registers a service worker for offline functionality.
+ * 
+ * @async
+ * @function registerSW
+ * @returns {Promise} A promise that resolves when the service worker is registered successfully, or rejects with an error if registration fails.
+ * @throws {Error} If the service worker registration fails.
+ */
 async function registerSW() {
     if ('serviceWorker' in navigator) {
         try {
