@@ -31,25 +31,23 @@
 
 </head>
 
-<body class="bg-dark container-fluid">
+<body class="bg-dark container">
     <!-- Result text -->
-    <div class="row ">
-        <span id="result" class="text-bold text-light col-12 mb-5"></span>
-
-
+    <div class="row align-items-center">
+        <span id="result" class="text-bold text-light col-12 mb-5 text-center"></span>
 
         <!-- Time Selection -->
 
-        <div class=" input-group  my-5">
+        <div class="col input-group  my-5">
             <input type="time" id="targetTime" class="form-control text-center input-text text-bold bg-dark text-light"
                 onchange="update()">
             <label class="input-group-text" for="targetTime">Heure cible</label>
         </div>
 
-
+        <div class="w-100"></div>
         <!-- Checkbox -->
 
-        <div class="input-group col-12 mt-5 ">
+        <div class="input-group col mt-5 ">
             <div class="input-group-text p-3">
                 <input class="form-check-input" type="checkbox" value="" id="offsetBox" onclick="update()" checked>
             </div>
@@ -57,13 +55,13 @@
                 <label for="offsetBox">-15 mins</label>
             </div>
         </div>
-
-        <div class="col-12 mt-5">
+        <div class="w-100"></div>
+        <div class="col mt-5">
             <button type="button" class="btn btn-danger btn-sm mt-5" onclick="resetCache()">
                 Supprimer cache
             </button>
         </div>
-    </div>
+        </>
 
 
 </body>
