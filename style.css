@@ -5,3 +5,13 @@
 .text-bold {
     font-weight: bold;
 }
+
+.bottom-left {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+#content {
+    height: 100vh;
+}

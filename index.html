@@ -32,37 +32,43 @@
 </head>
 
 <body class="bg-dark container">
-    <!-- Result text -->
-    <div class="row align-items-center">
-        <span id="result" class="text-bold text-light col-12 mb-5 text-center"></span>
+    <div id="content" class="row align-items-center">
+        <!-- Result text -->
+        <span id="result" class="text-bold text-light text-center" style="font-size: 10vmin;">Choisissez une
+            heure</span>
 
-        <!-- Time Selection -->
-
-        <div class="col input-group  my-5">
-            <input type="time" id="targetTime" class="form-control text-center input-text text-bold bg-dark text-light"
-                onchange="update()">
-            <label class="input-group-text" for="targetTime">Heure cible</label>
-        </div>
-
-        <div class="w-100"></div>
-        <!-- Checkbox -->
-
-        <div class="input-group col mt-5 ">
-            <div class="input-group-text p-3">
-                <input class="form-check-input" type="checkbox" value="" id="offsetBox" onclick="update()" checked>
+        <div class="col-12">
+            <div class="row">
+                <!-- Time Selection -->
+                <div class="col-12 col-sm-8 col-md-9 ">
+                    <div class="input-group">
+                        <input type="time" id="targetTime"
+                            class="form-control text-center input-text text-bold bg-dark text-light"
+                            onchange="update()">
+                        <label class="input-group-text" for="targetTime">Heure cible</label>
+                    </div>
+                </div>
+                <!-- Checkbox -->
+                <div class="col-12 col-sm-auto mt-2 mt-sm-0 ">
+                    <div class="input-group">
+                        <div class="input-group-text bg-dark">
+                            <input class="form-check-input input-text mb-2" type="checkbox" value="" id="offsetBox"
+                                onclick="update()" checked>
+                        </div>
+                        <label class="form-control py-3" for="offsetBox">-15 mins</label>
+                    </div>
+                </div>
             </div>
-            <div class="input-group-text p-3">
-                <label for="offsetBox">-15 mins</label>
-            </div>
         </div>
-        <div class="w-100"></div>
-        <div class="col mt-5">
-            <button type="button" class="btn btn-danger btn-sm mt-5" onclick="resetCache()">
-                Supprimer cache
-            </button>
-        </div>
-        </>
+    </div>
 
+
+    <!-- Cache clearing -->
+    <div class="w-25">
+        <button type="button" class="btn btn-danger btn-sm bottom-left" onclick="resetCache()">
+            Supprimer cache
+        </button>
+    </div>
 
 </body>
 
