@@ -11,10 +11,36 @@ document.addEventListener("DOMContentLoaded", function () {
     checkForUpdates();
 });
 
+/**
+ * Registers a service worker for offline functionality.
+ * 
+ * @async
+ * @function registerSW
+ * @returns {Promise} A promise that resolves when the service worker is registered successfully, or rejects with an error if registration fails.
+ * @throws {Error} If the service worker registration fails.
+ */
+async function registerSW() {
+    if ('serviceWorker' in navigator) {
+        try {
+            await navigator.serviceWorker.register('./sw.js');
+        }
+        catch (err) {
+            console.log(`SW registration failed`);
+        }
+    }
+}
+
 
 //#region Version control
 
-
+/**
+ * Registers a service worker for offline functionality.
+ * 
+ * @async
+ * @function registerSW
+ * @returns {Promise} A promise that resolves when the service worker is registered successfully, or rejects with an error if registration fails.
+ * @throws {Error} If the service worker registration fails.
+ */
 async function checkForUpdates() {
     const currentVersion = localStorage.getItem(CURRENT_VERSION_STORAGE_KEY);
 
@@ -33,6 +59,7 @@ async function checkForUpdates() {
 
 
 }
+
 /**
  * Resets the cache by unregistering the service worker and deleting the cache.
  * 
@@ -55,24 +82,6 @@ function resetCache(newVersion) {
 
 //#endregion
 
-/**
- * Registers a service worker for offline functionality.
- * 
- * @async
- * @function registerSW
- * @returns {Promise} A promise that resolves when the service worker is registered successfully, or rejects with an error if registration fails.
- * @throws {Error} If the service worker registration fails.
- */
-async function registerSW() {
-    if ('serviceWorker' in navigator) {
-        try {
-            await navigator.serviceWorker.register('./sw.js');
-        }
-        catch (err) {
-            console.log(`SW registration failed`);
-        }
-    }
-}
 
 /**
  * Updates the displayed time based on the target time entered by the user.
