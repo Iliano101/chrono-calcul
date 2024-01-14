@@ -1,25 +1,24 @@
-const SW_CACHE_NAME = "timer-v1";
+// #region Constants
+const SERVICEWORKER_CACHE_NAME = "timer-v1";
 const CURRENT_VERSION_STORAGE_KEY = "currentVersion";
 const GITHUB_API_URL = "https://api.github.com/repos/iliano101/chrono-calcul/commits/vercel";
+//#endregion
 
-/**
- * Initializes the document by registering the service worker and updating the target time.
- */
+// #region Event Listeners
 document.addEventListener("DOMContentLoaded", function () {
-    registerSW();
-    update();
+    registerServiceWorker();
+    updateResult();
     checkForUpdates();
 });
+//#endregion
 
+// #region Service Worker
 /**
- * Registers a service worker for offline functionality.
+ * Registers a service worker for the current page.
  * 
- * @async
- * @function registerSW
- * @returns {Promise} A promise that resolves when the service worker is registered successfully, or rejects with an error if registration fails.
- * @throws {Error} If the service worker registration fails.
+ * @returns {Promise} A promise that resolves when the service worker is successfully registered, or rejects if the registration fails.
  */
-async function registerSW() {
+async function registerServiceWorker() {
     if ('serviceWorker' in navigator) {
         try {
             await navigator.serviceWorker.register('./sw.js');
@@ -29,28 +28,25 @@ async function registerSW() {
         }
     }
 }
+//#endregion
 
-
-//#region Version control
-
+// #region Automatic Updates
 /**
- * Registers a service worker for offline functionality.
- * 
- * @async
- * @function registerSW
- * @returns {Promise} A promise that resolves when the service worker is registered successfully, or rejects with an error if registration fails.
- * @throws {Error} If the service worker registration fails.
+ * Check for updates and update the application if a new version is available.
+ *
+ * @returns {Promise<void>} - A promise that resolves once the check for updates is complete.
  */
 async function checkForUpdates() {
+    const OK = 200;
+
     const currentVersion = localStorage.getItem(CURRENT_VERSION_STORAGE_KEY);
 
     try {
         const response = await axios.get(GITHUB_API_URL);
-        if (response.status === 200 && response.data !== null && response.data !== undefined) {
-            //OK
+        if (response.status === OK && response.data !== null && response.data !== undefined) {
             const latestVersion = response.data.sha;
             if (currentVersion == null || currentVersion != latestVersion) {
-                resetCache(latestVersion);
+                updateApplication(latestVersion);
             }
         }
     } catch (err) {
@@ -61,68 +57,65 @@ async function checkForUpdates() {
 }
 
 /**
- * Resets the cache by unregistering the service worker and deleting the cache.
+ * Updates the application to a new version.
  * 
+ * @param {string} newVersion - The new version of the application.
  * @returns {void}
  */
-function resetCache(newVersion) {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function (registrations) {
-            for (const registration of registrations) {
-                // unregister service worker
-                registration.unregister();
-            }
-        });
-    }
-
-    caches.delete(SW_CACHE_NAME);
+function updateApplication(newVersion) {
+    unregisterServiceWorkers();
+    caches.delete(SERVICEWORKER_CACHE_NAME);
     localStorage.setItem(CURRENT_VERSION_STORAGE_KEY, newVersion);
     location.reload();
 }
 
-//#endregion
-
-
 /**
- * Updates the displayed time based on the target time entered by the user.
+ * Unregisters all service workers.
  * 
- * This function retrieves the current time and the target time from the input field.
- * It calculates the difference between the target time and the current time in milliseconds.
- * If the offset checkbox is checked, it subtracts 15 minutes from the difference.
- * If the difference is negative, it displays an error message.
- * Otherwise, it calculates the difference in hours and minutes and displays the result.
+ * This function checks if the browser supports service workers and then retrieves all active service worker registrations.
+ * It iterates through each registration and unregisters the service worker.
  * 
  * @returns {void}
  */
-function update() {
-    // Get the current date and time
+function unregisterServiceWorkers() {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+            for (const serviceWorker of registrations) {
+                serviceWorker.unregister();
+            }
+        });
+    }
+}
+// #endregion
+
+// #region Time Calculation
+/**
+ * Calculates the time difference between the current date and a target time.
+ * 
+ * @returns {void}
+ */
+function updateResult() {
     const currentDate = new Date();
 
-    // Get the target time element and value
     const targetTimeElement = document.getElementById('targetTime');
     const targetTimeValue = targetTimeElement.value;
 
     const offsetBoxElement = document.getElementById('offsetBox');
     const resultElement = document.getElementById('result');
 
-    // Split the target time value into hours and minutes
     const timeArray = targetTimeValue.split(":");
     const targetHours = timeArray[0];
     const targetMinutes = timeArray[1];
 
-    // Create a new date object with the current date and target time
     const targetTime = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), targetHours, targetMinutes);
 
 
-    // Calculate the difference in milliseconds
     let differenceInMilliseconds = targetTime - currentDate;
 
-    // Check if the offset box is checked and subtract 15 minutes from the difference if true
     if (offsetBoxElement.checked) {
         differenceInMilliseconds -= (15 * 60 * 1000);
     }
 
-    // Check if the target time is in the past and display an error message if true
     if (differenceInMilliseconds < 0) {
         resultElement.innerHTML = "Le temps cible est dans le passé&nbsp;!";
         resultElement.style.fontSize = "10vmin";
@@ -130,20 +123,17 @@ function update() {
     }
 
 
-    // Calculate the difference in hours and minutes
     const differenceInMinutes = (Math.floor(differenceInMilliseconds / (1000 * 60)) % 60);
     const differenceInHours = Math.floor(differenceInMilliseconds / (1000 * 60 * 60));
 
-    // Check if the difference in hours or minutes is NaN and return if true
     if (isNaN(differenceInHours) || isNaN(differenceInMinutes)) {
         return;
     }
 
-    // Format the difference in minutes and hours as strings
     const differenceInMinutesString = differenceInMinutes < 10 ? `0${differenceInMinutes}` : differenceInMinutes;
     const differenceInHoursString = differenceInHours < 10 ? `0${differenceInHours}` : differenceInHours;
 
-    // Display the result
     resultElement.textContent = `${differenceInHoursString}:${differenceInMinutesString}:00`;
     resultElement.style.fontSize = "20vmin";
 }
+//#endregion

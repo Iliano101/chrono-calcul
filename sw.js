@@ -1,4 +1,4 @@
-const SW_CACHE_NAME = "timer-v1";
+const SERVICEWORKER_CACHE_NAME = "timer-v1";
 const staticAssets = [
     "./",
     "./index.html",
