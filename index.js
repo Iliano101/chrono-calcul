@@ -1,4 +1,6 @@
 const SW_CACHE_NAME = "timer-v1";
+const CURRENT_VERSION_STORAGE_KEY = "currentVersion";
+const GITHUB_API_URL = "https://api.github.com/repos/iliano101/chrono-calcul/commits/vercel";
 
 /**
  * Initializes the document by registering the service worker and updating the target time.
@@ -6,7 +8,52 @@ const SW_CACHE_NAME = "timer-v1";
 document.addEventListener("DOMContentLoaded", function () {
     registerSW();
     update();
+    checkForUpdates();
 });
+
+
+//#region Version control
+
+
+async function checkForUpdates() {
+    const currentVersion = localStorage.getItem(CURRENT_VERSION_STORAGE_KEY);
+
+    try {
+        const response = await axios.get(GITHUB_API_URL);
+        if (response.status === 200 && response.data !== null && response.data !== undefined) {
+            //OK
+            const latestVersion = response.data.sha;
+            if (currentVersion == null || currentVersion != latestVersion) {
+                resetCache(latestVersion);
+            }
+        }
+    } catch (err) {
+        console.error(err);
+    }
+
+
+}
+/**
+ * Resets the cache by unregistering the service worker and deleting the cache.
+ * 
+ * @returns {void}
+ */
+function resetCache(newVersion) {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+            for (const registration of registrations) {
+                // unregister service worker
+                registration.unregister();
+            }
+        });
+    }
+
+    caches.delete(SW_CACHE_NAME);
+    localStorage.setItem(CURRENT_VERSION_STORAGE_KEY, newVersion);
+    location.reload();
+}
+
+//#endregion
 
 /**
  * Registers a service worker for offline functionality.
