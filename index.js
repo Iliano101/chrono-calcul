@@ -2,12 +2,13 @@
 const SERVICEWORKER_CACHE_NAME = "timer-v1";
 const CURRENT_VERSION_STORAGE_KEY = "currentVersion";
 const GITHUB_API_URL = "https://api.github.com/repos/iliano101/chrono-calcul/commits/vercel";
+const UPDATE_INTERVAL = 1000;
 //#endregion
 
 // #region Event Listeners
 document.addEventListener("DOMContentLoaded", function () {
     registerServiceWorker();
-    updateResult();
+    setInterval(updateResult, UPDATE_INTERVAL);
     checkForUpdates();
 });
 //#endregion
@@ -95,13 +96,18 @@ function unregisterServiceWorkers() {
  * @returns {void}
  */
 function updateResult() {
+    console.log("Updating result");
     const currentDate = new Date();
 
     const targetTimeElement = document.getElementById('targetTime');
     const targetTimeValue = targetTimeElement.value;
-
     const offsetBoxElement = document.getElementById('offsetBox');
     const resultElement = document.getElementById('result');
+
+    resultElement.style.fontSize = "10vmin";
+    if (targetTimeValue == "") {
+        resultElement.innerHTML = "Entrez l'heure cible";
+    }
 
     const timeArray = targetTimeValue.split(":");
     const targetHours = timeArray[0];
@@ -118,7 +124,6 @@ function updateResult() {
 
     if (differenceInMilliseconds < 0) {
         resultElement.innerHTML = "Le temps cible est dans le passé&nbsp;!";
-        resultElement.style.fontSize = "10vmin";
         return;
     }
 
