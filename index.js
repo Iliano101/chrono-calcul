@@ -25,7 +25,7 @@ async function registerServiceWorker() {
             await navigator.serviceWorker.register('./sw.js');
         }
         catch (err) {
-            console.log(`SW registration failed`);
+            console.error(`SW registration failed`);
         }
     }
 }
@@ -96,7 +96,6 @@ function unregisterServiceWorkers() {
  * @returns {void}
  */
 function updateResult() {
-    console.log("Updating result");
     const currentDate = new Date();
 
     const targetTimeElement = document.getElementById('targetTime');

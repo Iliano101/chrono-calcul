@@ -16,8 +16,8 @@ const staticAssets = [
 
 
 self.addEventListener("install", async err => {
-    caches.delete(SW_CACHE_NAME);
-    const cache = await caches.open(SW_CACHE_NAME);
+    caches.delete(SERVICEWORKER_CACHE_NAME);
+    const cache = await caches.open(SERVICEWORKER_CACHE_NAME);
     await cache.addAll(staticAssets);
     return self.skipWaiting();
 });
@@ -41,13 +41,13 @@ self.addEventListener("fetch", async event => {
 });
 
 async function cacheFirst(req) {
-    const cache = await caches.open(SW_CACHE_NAME);
+    const cache = await caches.open(SERVICEWORKER_CACHE_NAME);
     const cached = await cache.match(req);
     return cached || fetch(req);
 }
 
 async function networkAndCache(req) {
-    const cache = await caches.open(SW_CACHE_NAME);
+    const cache = await caches.open(SERVICEWORKER_CACHE_NAME);
     try {
         const fresh = await fetch(req);
         await cache.put(req, fresh.clone());
