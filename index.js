@@ -101,7 +101,7 @@ function updateResult() {
     const targetTimeElement = document.getElementById('targetTime');
     const targetTimeValue = targetTimeElement.value;
     const offsetBoxElement = document.getElementById('offsetBox');
-    const resultElement = document.getElementById('result');
+    const resultElement = document.getElementById('result-text');
 
     resultElement.style.fontSize = "10vmin";
     if (targetTimeValue == "") {

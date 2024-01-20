@@ -1,11 +1,49 @@
-.input-text {
+/* Constants */
+:root {
+    --page-dark-color: #191b26;
+    --subpage-dark-color: #2e303a;
+    --light-text-color: white;
+    --accent-color: #9cb0ff;
+}
+
+/* Specific changes */
+html * {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: var(--page-dark-color);
+    color: var(--light-text-color);
+}
+
+#container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+#result-text {
+    font-size: 10vmin;
+    flex: 1;
+}
+
+#time-input {
+    flex: 1;
+    background-color: var(--subpage-dark-color);
+}
+
+#offset-checkbox {
+    flex: 1;
+    background-color: var(--subpage-dark-color);
+
+}
+
+/* Helper classes */
+.text-xxl {
     font-size: xx-large;
 }
 
 .text-bold {
     font-weight: bold;
-}
-
-#content {
-    height: 100vh;
 }
