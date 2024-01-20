@@ -32,20 +32,22 @@ html * {
 
 /* Inputs div*/
 #inputs-div {
+    display: flex;
+    flex-direction: column;
     width: 90vw;
 }
 
 /* Time Input */
-#time-input {
+#time-input-div {
     background-color: var(--subpage-dark-color);
     width: 95%;
-    margin: auto;
+    margin: auto auto 2% auto;
     padding: 2%;
-    border-radius: 25px;
+    border-radius: 5vmin;
 }
 
 #target-time {
-    border-radius: 25px;
+    border-radius: 5vmin;
     border: none;
     width: 100%;
     background-color: var(--accent-color);
@@ -62,18 +64,25 @@ html * {
 }
 
 /* Checkbox */
-#offset-checkbox {
+#offset-checkbox-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 3%;
     width: 95%;
     margin: auto;
-    padding: 2%;
     background-color: var(--subpage-dark-color);
-    border-radius: 25px;
+    border-radius: 5vmin;
 }
 
 #offset-box {
+    --checkbox-size: 10vmin;
     border: none;
     accent-color: var(--accent-color);
-    transform: scale(5);
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
+    margin: 2%;
 }
 
 #label-offset-box {
