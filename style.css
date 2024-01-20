@@ -16,27 +16,70 @@ html * {
 }
 
 #container {
-    height: 100vh;
+    height: calc(100vh - 16px);
     display: flex;
     flex-direction: column;
-
+    text-align: center;
     align-items: center;
+    justify-content: space-around;
 }
 
+/* Result text */
 #result-text {
     font-size: 10vmin;
-    flex: 1;
+    color: var(--accent-color);
 }
 
+/* Inputs div*/
+#inputs-div {
+    width: 90vw;
+}
+
+/* Time Input */
 #time-input {
-    flex: 1;
     background-color: var(--subpage-dark-color);
+    width: 95%;
+    margin: auto;
+    padding: 2%;
+    border-radius: 25px;
 }
 
-#offset-checkbox {
-    flex: 1;
-    background-color: var(--subpage-dark-color);
+#target-time {
+    border-radius: 25px;
+    border: none;
+    width: 100%;
+    background-color: var(--accent-color);
+    color: var(--subpage-dark-color);
+    font-size: 10vmin;
+    text-align: center;
+}
 
+#label-target-time {
+    width: 100%;
+    background-color: var(--subpage-dark-color);
+    color: var(--accent-color);
+    font-size: 5vmin;
+}
+
+/* Checkbox */
+#offset-checkbox {
+    width: 95%;
+    margin: auto;
+    padding: 2%;
+    background-color: var(--subpage-dark-color);
+    border-radius: 25px;
+}
+
+#offset-box {
+    border: none;
+    accent-color: var(--accent-color);
+    transform: scale(5);
+}
+
+#label-offset-box {
+    color: var(--accent-color);
+    background-color: var(--subpage-dark-color);
+    font-size: 5vmin;
 }
 
 /* Helper classes */

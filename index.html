@@ -35,14 +35,16 @@
         <span id="result-text" class="text-bold">Entrez l'heure
             cible</span>
         <!-- Time Selection -->
-        <div id="time-input">
-            <input type="time" id="targetTime" class="text-xxl text-bold" onchange="updateResult()">
-            <label for="targetTime">Heure cible</label>
-        </div>
-        <!-- Checkbox -->
-        <div id="offset-checkbox">
-            <input class="text-xxl" type="checkbox" value="" id="offsetBox" onclick="updateResult()" checked>
-            <label for="offsetBox">-15 mins</label>
+        <div id="inputs-div">
+            <div id="time-input">
+                <label id="label-target-time" for="target-time">Heure cible</label>
+                <input id="target-time" type="time" class="text-xxl text-bold" onchange="updateResult()">
+            </div>
+            <!-- Checkbox -->
+            <div id="offset-checkbox">
+                <input id="offset-box" class="text-xxl" type="checkbox" value="" onclick="updateResult()" checked>
+                <label id="label-offset-box" for="offset-box">-15 mins</label>
+            </div>
         </div>
     </div>
 </body>

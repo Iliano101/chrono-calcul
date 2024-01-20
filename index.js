@@ -98,9 +98,9 @@ function unregisterServiceWorkers() {
 function updateResult() {
     const currentDate = new Date();
 
-    const targetTimeElement = document.getElementById('targetTime');
+    const targetTimeElement = document.getElementById('target-time');
     const targetTimeValue = targetTimeElement.value;
-    const offsetBoxElement = document.getElementById('offsetBox');
+    const offsetBoxElement = document.getElementById('offset-box');
     const resultElement = document.getElementById('result-text');
 
     resultElement.style.fontSize = "10vmin";
