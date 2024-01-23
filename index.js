@@ -67,7 +67,6 @@ function updateApplication(newVersion) {
     unregisterServiceWorkers();
     caches.delete(SERVICEWORKER_CACHE_NAME);
     localStorage.setItem(CURRENT_VERSION_STORAGE_KEY, newVersion);
-    location.reload();
 }
 
 /**
