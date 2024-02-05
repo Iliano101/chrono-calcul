@@ -1,7 +1,8 @@
 // #region Constants
 const SERVICEWORKER_CACHE_NAME = "timer-v1";
 const CURRENT_VERSION_STORAGE_KEY = "currentVersion";
-const GITHUB_API_URL = "https://api.github.com/repos/iliano101/chrono-calcul/commits/vercel";
+const GITHUB_API_URL =
+    "https://api.github.com/repos/iliano101/chrono-calcul/commits/vercel";
 const UPDATE_INTERVAL = 1000;
 //#endregion
 
@@ -16,15 +17,14 @@ document.addEventListener("DOMContentLoaded", function () {
 // #region Service Worker
 /**
  * Registers a service worker for the current page.
- * 
+ *
  * @returns {Promise} A promise that resolves when the service worker is successfully registered, or rejects if the registration fails.
  */
 async function registerServiceWorker() {
-    if ('serviceWorker' in navigator) {
+    if ("serviceWorker" in navigator) {
         try {
-            await navigator.serviceWorker.register('./sw.js');
-        }
-        catch (err) {
+            await navigator.serviceWorker.register("./sw.js");
+        } catch (err) {
             console.error(`SW registration failed`);
         }
     }
@@ -44,7 +44,11 @@ async function checkForUpdates() {
 
     try {
         const response = await axios.get(GITHUB_API_URL);
-        if (response.status === OK && response.data !== null && response.data !== undefined) {
+        if (
+            response.status === OK &&
+            response.data !== null &&
+            response.data !== undefined
+        ) {
             const latestVersion = response.data.sha;
             if (currentVersion == null || currentVersion != latestVersion) {
                 updateApplication(latestVersion);
@@ -53,13 +57,11 @@ async function checkForUpdates() {
     } catch (err) {
         console.error(err);
     }
-
-
 }
 
 /**
  * Updates the application to a new version.
- * 
+ *
  * @param {string} newVersion - The new version of the application.
  * @returns {void}
  */
@@ -70,20 +72,22 @@ function updateApplication(newVersion) {
 }
 
 /**
- * Unregisters all service workers.
- * 
+ * Unregister all service workers.
+ *
  * This function checks if the browser supports service workers and then retrieves all active service worker registrations.
- * It iterates through each registration and unregisters the service worker.
- * 
+ * It iterates through each registration and unregister the service worker.
+ *
  * @returns {void}
  */
 function unregisterServiceWorkers() {
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function (registrations) {
-            for (const serviceWorker of registrations) {
-                serviceWorker.unregister();
-            }
-        });
+    if ("serviceWorker" in navigator) {
+        navigator.serviceWorker
+            .getRegistrations()
+            .then(function (registrations) {
+                for (const serviceWorker of registrations) {
+                    serviceWorker.unregister();
+                }
+            });
     }
 }
 // #endregion
@@ -91,16 +95,16 @@ function unregisterServiceWorkers() {
 // #region Time Calculation
 /**
  * Calculates the time difference between the current date and a target time.
- * 
+ *
  * @returns {void}
  */
 function updateResult() {
     const currentDate = new Date();
 
-    const targetTimeElement = document.getElementById('target-time');
+    const targetTimeElement = document.getElementById("target-time");
     const targetTimeValue = targetTimeElement.value;
-    const offsetBoxElement = document.getElementById('offset-box');
-    const resultElement = document.getElementById('result-text');
+    const offsetBoxElement = document.getElementById("offset-box");
+    const resultElement = document.getElementById("result-text");
 
     resultElement.style.fontSize = "10vmin";
     if (targetTimeValue == "") {
@@ -111,13 +115,18 @@ function updateResult() {
     const targetHours = timeArray[0];
     const targetMinutes = timeArray[1];
 
-    const targetTime = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate(), targetHours, targetMinutes);
-
+    const targetTime = new Date(
+        currentDate.getFullYear(),
+        currentDate.getMonth(),
+        currentDate.getDate(),
+        targetHours,
+        targetMinutes
+    );
 
     let differenceInMilliseconds = targetTime - currentDate;
 
     if (offsetBoxElement.checked) {
-        differenceInMilliseconds -= (15 * 60 * 1000);
+        differenceInMilliseconds -= 15 * 60 * 1000;
     }
 
     if (differenceInMilliseconds < 0) {
@@ -125,16 +134,22 @@ function updateResult() {
         return;
     }
 
-
-    const differenceInMinutes = (Math.floor(differenceInMilliseconds / (1000 * 60)) % 60);
-    const differenceInHours = Math.floor(differenceInMilliseconds / (1000 * 60 * 60));
+    const differenceInMinutes =
+        Math.floor(differenceInMilliseconds / (1000 * 60)) % 60;
+    const differenceInHours = Math.floor(
+        differenceInMilliseconds / (1000 * 60 * 60)
+    );
 
     if (isNaN(differenceInHours) || isNaN(differenceInMinutes)) {
         return;
     }
 
-    const differenceInMinutesString = differenceInMinutes < 10 ? `0${differenceInMinutes}` : differenceInMinutes;
-    const differenceInHoursString = differenceInHours < 10 ? `0${differenceInHours}` : differenceInHours;
+    const differenceInMinutesString =
+        differenceInMinutes < 10
+            ? `0${differenceInMinutes}`
+            : differenceInMinutes;
+    const differenceInHoursString =
+        differenceInHours < 10 ? `0${differenceInHours}` : differenceInHours;
 
     resultElement.textContent = `${differenceInHoursString}:${differenceInMinutesString}:00`;
     resultElement.style.fontSize = "20vmin";
