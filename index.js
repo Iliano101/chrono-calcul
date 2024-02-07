@@ -25,7 +25,7 @@ async function registerServiceWorker() {
         try {
             await navigator.serviceWorker.register("./sw.js");
         } catch (err) {
-            console.error(`SW registration failed`);
+            showUserError(err, `SW registration failed`);
         }
     }
 }
@@ -55,7 +55,7 @@ async function checkForUpdates() {
             }
         }
     } catch (err) {
-        console.error(err);
+        showUserError(err, "Failed to check for updates on GitHub");
     }
 }
 
@@ -69,6 +69,7 @@ function updateApplication(newVersion) {
     unregisterServiceWorkers();
     caches.delete(SERVICEWORKER_CACHE_NAME);
     localStorage.setItem(CURRENT_VERSION_STORAGE_KEY, newVersion);
+    location.reload();
 }
 
 /**
@@ -153,5 +154,16 @@ function updateResult() {
 
     resultElement.textContent = `${differenceInHoursString}:${differenceInMinutesString}:00`;
     resultElement.style.fontSize = "20vmin";
+}
+//#endregion
+
+// #region Utils
+function showUserError(err, userMessage) {
+    const errorObjet = {
+        status: err.response.status ? err.response.status : "No status",
+        errorMessage: err.response.data ? err.response.data : err.message,
+        userMessage: userMessage,
+    };
+    console.error(errorObjet);
 }
 //#endregion
