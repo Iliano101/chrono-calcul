@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 async function registerServiceWorker() {
     if ("serviceWorker" in navigator) {
         try {
-            await navigator.serviceWorker.register("./sw.js");
+            await navigator.serviceWorker.register("./JS/sw.js");
         } catch (err) {
             showUserError(err, `SW registration failed`);
         }

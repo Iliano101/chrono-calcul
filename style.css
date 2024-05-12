@@ -7,10 +7,9 @@
 }
 
 /* Specific changes */
-html * {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
+html {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 100%;
     background-color: var(--page-dark-color);
     color: var(--light-text-color);
 }
