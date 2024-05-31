@@ -1,8 +1,10 @@
 const SERVICEWORKER_CACHE_NAME = "timer-v1";
+// TODO : UPDATE
 const staticAssets = [
     "./",
     "./index.html",
-    "./style.css",
+    "./CSS/style.css",
+    "./CSS/preflight.css",
     "./JS/index.js",
     "./JS/sw.js",
     "./manifest.webmanifest",

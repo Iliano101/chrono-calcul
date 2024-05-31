@@ -1,0 +1,75 @@
+/*#region Constants */
+:root {
+    --page-dark-color: #191b26;
+    --subpage-dark-color: #2e303a;
+    --light-text-color: white;
+    --accent-color: #9cb0ff;
+}
+/*#endregion*/
+
+/*#region Best practices*/
+html {
+    font-size: 100%;
+}
+/*#endregion*/
+
+/*#region Specific changes*/
+body {
+    background-color: var(--page-dark-color);
+    color: var(--light-text-color);
+}
+
+/* Result text */
+#result-text {
+    color: var(--accent-color);
+}
+
+/* Time Input */
+#time-input-div {
+    background-color: var(--subpage-dark-color);
+}
+
+#target-time {
+    background-color: var(--accent-color);
+    color: var(--subpage-dark-color);
+}
+
+#label-target-time {
+    color: var(--accent-color);
+}
+
+/* Checkbox */
+/* TODO */
+/*#endregion*/
+
+/*#region Helper classes*/
+.double-text {
+    font-size: 200%;
+}
+
+.triple-text {
+    font-size: 300%;
+}
+
+.quad-text {
+    font-size: 400%;
+}
+
+.text-bold {
+    font-weight: bold;
+}
+
+/*#region WTF but it works ??*/
+.btn-check:checked + .btn-checkbox-accent {
+    border-color: var(--accent-color) !important;
+    background-color: var(--accent-color) !important;
+    color: var(--page-dark-color) !important;
+}
+
+.btn-checkbox-accent {
+    border-color: var(--accent-color) !important;
+    background-color: var(--page-dark-color) !important;
+    color: var(--accent-color) !important;
+}
+/*#endregion*/
+/*#endregion*/

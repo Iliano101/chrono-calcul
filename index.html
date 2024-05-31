@@ -12,41 +12,55 @@
         Chrono Calcul
     </title>
 
+
+    <!-- Metadata -->
     <!-- Manifest -->
     <link rel="manifest" href="./manifest.webmanifest">
     <!-- Icon -->
     <link rel="shortcut icon" href="./assets/svg-icon.svg" type="image/x-icon">
-    <!-- Custom CSS -->
-    <link href="style.css" rel="stylesheet">
 
+    <!-- CSS -->
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Preflight CSS -->
+    <link href="./CSS/style.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="./CSS/preflight.css" rel="stylesheet">
+
+    <!-- JS -->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"
+        defer></script>
     <!-- Axios -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.1/axios.min.js"
         integrity="sha512-emSwuKiMyYedRwflbZB2ghzX8Cw8fmNVgZ6yQNNXXagFzFOaQmbvQ1vmDkddHjm5AITcBIZfC7k4ShQSjgPAmQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-
-    <!-- Personnel -->
+    <!-- Custom JS -->
     <script src="JS/index.js" defer></script>
 
 </head>
 
-<body>
-    <div id="container">
-        <!-- Result text -->
-        <span id="result-text" class="text-bold">Entrez l'heure
-            cible</span>
-        <!-- Time Selection -->
-        <div id="inputs-div">
-            <div id="time-input-div">
-                <label id="label-target-time" for="target-time" class="text-bold">Heure cible</label>
-                <input id="target-time" type="time" class="text-xxl text-bold" onchange="updateResult()">
-            </div>
-            <!-- Checkbox -->
-            <div id="offset-checkbox-div">
-                <input id="offset-box" class="text-xxl" type="checkbox" value="" onclick="updateResult()" checked>
-                <label id="label-offset-box" for="offset-box" class="text-bold ">-15 mins</label>
-            </div>
+<body class="container text-center">
+    <!-- Result text -->
+    <span id="result-text" class="text-bold triple-text">Entrez l'heure
+        cible</span>
+    <!-- Time Selection -->
+    <div id="inputs-div" class="d-flex flex-column">
+        <div id="time-input-div" class="rounded-4 p-3 d-flex flex-column mb-3">
+            <label id="label-target-time" for="target-time" class="double-text">Heure cible</label>
+            <input id="target-time" type="time" class="rounded-4 text-center double-text" onchange="updateResult()">
         </div>
-    </div>
+        <!-- Checkbox -->
+        <div id="offset-checkbox-div" class="rounded-4 btn-group col-auto " role="group"
+            aria-label="Basic checkbox toggle button group">
+            <input id="offset-box" type="checkbox" class="btn-check" value="" onclick="updateResult()"
+                autocomplete="off" checked>
+            <label id="label-offset-box" class="rounded-4 btn btn-outline-primary btn-checkbox-accent double-text"
+                for="offset-box">-15
+                mins</label>
+        </div>
 </body>
 
 </html>

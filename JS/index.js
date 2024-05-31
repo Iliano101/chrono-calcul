@@ -107,7 +107,6 @@ function updateResult() {
     const offsetBoxElement = document.getElementById("offset-box");
     const resultElement = document.getElementById("result-text");
 
-    resultElement.style.fontSize = "10vmin";
     if (targetTimeValue == "") {
         resultElement.innerHTML = "Entrez l'heure cible";
     }
@@ -125,6 +124,8 @@ function updateResult() {
     );
 
     let differenceInMilliseconds = targetTime - currentDate;
+
+    console.log(`Checkbox is ${offsetBoxElement.checked}`);
 
     if (offsetBoxElement.checked) {
         differenceInMilliseconds -= 15 * 60 * 1000;
@@ -153,7 +154,6 @@ function updateResult() {
         differenceInHours < 10 ? `0${differenceInHours}` : differenceInHours;
 
     resultElement.textContent = `${differenceInHoursString}:${differenceInMinutesString}:00`;
-    resultElement.style.fontSize = "20vmin";
 }
 //#endregion
 
