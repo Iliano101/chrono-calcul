@@ -125,8 +125,6 @@ function updateResult() {
 
     let differenceInMilliseconds = targetTime - currentDate;
 
-    console.log(`Checkbox is ${offsetBoxElement.checked}`);
-
     if (offsetBoxElement.checked) {
         differenceInMilliseconds -= 15 * 60 * 1000;
     }

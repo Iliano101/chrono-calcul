@@ -17,8 +17,12 @@ html {
 body {
     background-color: var(--page-dark-color);
     color: var(--light-text-color);
+    min-height: 100%;
 }
 
+html {
+    height: 100%;
+}
 /* Result text */
 #result-text {
     color: var(--accent-color);
@@ -37,9 +41,6 @@ body {
 #label-target-time {
     color: var(--accent-color);
 }
-
-/* Checkbox */
-/* TODO */
 /*#endregion*/
 
 /*#region Helper classes*/

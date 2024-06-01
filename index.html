@@ -42,24 +42,34 @@
 
 </head>
 
-<body class="container text-center">
-    <!-- Result text -->
-    <span id="result-text" class="text-bold triple-text">Entrez l'heure
-        cible</span>
-    <!-- Time Selection -->
-    <div id="inputs-div" class="d-flex flex-column">
-        <div id="time-input-div" class="rounded-4 p-3 d-flex flex-column mb-3">
-            <label id="label-target-time" for="target-time" class="double-text">Heure cible</label>
-            <input id="target-time" type="time" class="rounded-4 text-center double-text" onchange="updateResult()">
-        </div>
-        <!-- Checkbox -->
-        <div id="offset-checkbox-div" class="rounded-4 btn-group col-auto " role="group"
-            aria-label="Basic checkbox toggle button group">
-            <input id="offset-box" type="checkbox" class="btn-check" value="" onclick="updateResult()"
-                autocomplete="off" checked>
-            <label id="label-offset-box" class="rounded-4 btn btn-outline-primary btn-checkbox-accent double-text"
-                for="offset-box">-15
-                mins</label>
+<body class="container text-center d-flex flex-column justify-content-evenly">
+    <div class="row">
+        <!-- Result text -->
+        <span id="result-text" class="text-bold triple-text col-12">Entrez l'heure
+            cible</span>
+    </div>
+    <div class="row">
+        <!-- Time Selection -->
+        <div id="inputs-div">
+            <div id="time-input-div" class="rounded-4 p-3">
+
+                <div class="row d-flex flex-column">
+                    <label id="label-target-time" for="target-time" class="double-text w-auto">Heure
+                        cible</label>
+
+                    <input id="target-time" type="time" class="rounded-4 text-center double-text w-auto"
+                        onchange="updateResult()">
+                </div>
+            </div>
+            <!-- Checkbox -->
+            <div id="offset-checkbox-div" class="rounded-4 btn-group col-md-auto col-12 mt-3" role="group"
+                aria-label="Basic checkbox toggle button group">
+                <input id="offset-box" type="checkbox" class="btn-check" value="" onclick="updateResult()"
+                    autocomplete="off" checked>
+                <label id="label-offset-box" class="rounded-4 btn btn-outline-primary btn-checkbox-accent double-text"
+                    for="offset-box">-15
+                    mins</label>
+            </div>
         </div>
 </body>
 
