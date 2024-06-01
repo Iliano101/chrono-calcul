@@ -1,16 +1,15 @@
 const SERVICEWORKER_CACHE_NAME = "timer-v1";
-// TODO : UPDATE
 const staticAssets = [
     "./",
-    "./index.html",
+    "./assets/512px-icon.png",
+    "./assets/maskable-icon.png",
+    "./assets/svg-icon.svg",
     "./CSS/style.css",
     "./CSS/preflight.css",
     "./JS/index.js",
     "./JS/sw.js",
+    "./index.html",
     "./manifest.webmanifest",
-    "./assets/512px-icon.png",
-    "./assets/maskable-icon.png",
-    "./assets/svg-icon.svg",
 ];
 
 self.addEventListener("install", async (err) => {
